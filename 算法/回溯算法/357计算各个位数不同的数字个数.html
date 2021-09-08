@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var countNumbersWithUniqueDigits = function (n) {
+        let path = []
+        let num = 0
+        let index = -1
+        var newA = []
+        function backTrack(path) {
+            if (path.length === n) {
+                num++
+                return
+            }
+            for (var i = 0; i < 10; i++) {
+                index = -1
+                for (var j = 0; j < path.length; j++) {  // 清除数组的0 比如0010 变成 10
+                    if (path[j] !== 0) {
+                        index = j
+                        break
+                    }
+                }
+                if (index !== -1) {
+                    newA = path.slice(index, path.length)
+                }
+                else {
+                    newA = []
+                }
+
+                if (newA.indexOf(i) === -1) {
+                    path.push(i)
+                    backTrack(path)
+                    path.pop()
+                }
+            }
+        }
+        backTrack(path)
+        return num
+    }
+
+
+    console.log(countNumbersWithUniqueDigits(11))
+</script>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=|, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #canvas {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <canvas id='canvas'></canvas>
+</body>
+<script>
+    var canvas = document.querySelector("#canvas")
+    canvas.style.backgroundColor = "#f6f6f6"
+    window.onload = function () {
+        if (canvas.getContext) {
+            canvas.width = 400
+            canvas.height = 200
+            var ctx = canvas.getContext("2d")
+            var img = new Image()
+            img.src = './images/1.jpg'
+            img.onload = function () {
+                draw()
+            }
+            function draw() {
+                ctx.drawImage(img, 0, 0, 200, 200)
+            }
+            var oldImageData = ctx.getImageData(0, 0, 200, 200)
+            var newImageData = ctx.createImageData(200, 200)
+            var size = 5
+            for (var i = 0; i < oldImageData.width / size; i++) {
+                for (var j = 0; j < oldImageData.height / size; j++) {
+                    var color = getPxInfo(oldImageData, i * size + Math.floor(Math.random() * size), j * size + Math.floor(Math.random() * size))
+                    for (var a = 0; a < size; a++) {
+                        for (var b = 0; b < size; b++) {
+                            setPxInfo(newImageData, i * size + a, j * size + b, color)
+                        }
+                    }
+                    ctx.putImageData(newImageData, 200, 0)
+                }
+
+
+            }
+
+            function setPxInfo(imageData, x, y, color) {
+                var data = imageData.data
+                var w = imageData.width
+                var h = imageData.height
+                data[(y * w + x) * 4] = color[0]
+                data[(y * w + x) * 4 + 1] = color[1]
+                data[(y * w + x) * 4 + 2] = color[2]
+                data[(y * w + x) * 4 + 3] = color[3]
+            }
+
+            function getPxInfo(imageData, x, y) {
+                var w = imageData.width
+                var h = imageData.height
+                var color = []
+                color[0] = imageData.data[(y * w + x) * 4]
+                color[1] = imageData.data[(y * w + x) * 4 + 1]
+                color[2] = imageData.data[(y * w + x) * 4 + 2]
+                color[3] = imageData.data[(y * w + x) * 4 + 3]
+                return color
+            }
+        }
+    }
+</script>
+
+
+</html>

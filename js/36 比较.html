@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // js 隐式转换和显示转换
+    Boolean([])   // true
+    Number([])    // 0
+    Number({})    // NaN
+    Number(false) // 0
+    console.log(([]) ? true : false)// => console.log((true)?true:false)
+    console.log([] == false ? true : false) // => console.log(0==0?true:false)
+    console.log(({} == false) ? true : false) // => console.log((NaN==0)?true:false)
+
+    
+</script>
+
+</html>

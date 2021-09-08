@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 16px;
+    }
+
+    .wrap {
+        width: 100vw;
+        height: 100vh;
+        background-color: pink;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .top {
+        width: 80%;
+        height: 60%;
+        background-color: #fff;
+    }
+
+    .bottom {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .bottom .bottom-top {
+        width: 60%;
+        height: 60%;
+        background-color: yellow;
+    }
+
+    .bottom .bottom-bottom {
+        width: 100%;
+        height: 25%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .bottom .bottom-bottom div {
+        width: 20%;
+        height: 100%;
+        background-color: red;
+    }
+
+    @media screen and (orientation:landscape) {
+        .wrap {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .top {
+            width: 60%;
+        }
+
+        .bottom {
+            width: 30%;
+            height: 60%;
+        }
+
+        .bottom .bottom-top {
+            width: 80%;
+            background-color: yellow;
+        }
+
+        .bottom .bottom-bottom div {
+            width: 20%;
+            height: 90%;
+            background-color: black;
+        }
+    }
+
+    @media screen and (min-width:1024px) {
+        html {
+            font-size: calc(1024px*16/375);
+        }
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="top">top测试测试测试</div>
+        <div class="bottom">
+            <div class="bottom-top">bottom-top测试测试测试</div>
+            <div class="bottom-bottom">
+                <div>1测试测试测试 </div>
+                <div>1测试测试测试 </div>
+                <div>1测试测试测试 </div>
+                <div>1测试测试测试 </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    let change = function(doc, win, undefined) {
+        let docEl = doc.documentElement
+        let resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+        console.log('resizeEvt');
+        //     recalc = function () {
+        //         var clientWidth = docEl.clientWidth;
+        //         if (clientWidth === undefined) return;
+        //         //以ip5为基准  
+        //         docEl.style.fontSize = (clientWidth * 100) / 320 + 'px';
+        //     };
+        // if (doc.addEventListener === undefined) return;
+        // win.addEventListener(resizeEvt, recalc, false);
+        // doc.addEventListener('DOMContentLoaded', recalc, false)
+    }
+
+    change(document, window)
+    window.onresize = change(document, window)
+</script>
+
+</html>

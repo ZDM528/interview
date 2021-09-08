@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<style>
+    .wrap {
+        overflow: hidden;
+    }
+
+    .left {
+        width: 100px;
+        height: 200px;
+        background-color: #000;
+        float: left;
+        padding-bottom: 1000px;
+        margin-bottom: -1000px;
+    }
+
+    .right {
+        width: 100px;
+        height: 400px;
+        background-color: red;
+        float: left;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+</body>
+<script>
+    // let i = 34
+    // let id = window.requestAnimationFrame(move)
+    // function move() {
+    //     i++
+    //     console.log(i)
+    // }
+    // console.log(id)
+
+
+    // var loadImg = new Promise((resolve, reject) => {
+    //     var img = new Image()
+    //     img.src = "./images/a.jpg"
+    //     img.onload = function () {
+    //         resolve('成功了')
+    //     }
+    //     img.onerror = function () {
+    //         reject('失败了')
+    //         img.src = "./images/2.jpg"
+    //     }
+    //     var wrap = document.querySelector(".wrap")
+    //     wrap.appendChild(img)
+    // })
+
+    // loadImg.then(data => {
+    //     alert(data)
+    // }).catch(err => {
+    //     alert(err)
+    // })
+
+
+
+    // new Promise(function (resolve, reject) {
+    //     console.log(2);
+    //     resolve();
+    // }).then(function () {
+    //     console.log(3)
+    // }).then(function () { console.log(4) });
+    // process.nextTick(function () { console.log(5) });
+    // console.log(6);
+
+
+    // function deepClone(element) {
+    //     if (!(typeof element === 'object' && element !== null)) return element
+    //     var obj = element instanceof Array ? [] : {}
+    //     for (var key in element) {
+    //         if (element.hasOwnProperty(key)) {
+    //             obj[key] = typeof element[key] === 'object' ? deepClone(element[key]) : element[key]
+    //         }
+    //     }
+    //     return obj
+    // }
+
+    // var obj = { a: 1, b: { c: 1 } }
+    // var obj1 = deepClone(obj)
+    // obj.b.c = "44"
+    // console.log(obj1);
+
+
+
+    // for (let i = 0; i < 5; i++) {
+    //     setTimeout(() => {
+    //         console.log(i);
+    //     }, 1000 * i)
+    // }
+
+
+    // for (var i = 0; i < 5; i++) {
+    //     (function (i) {
+    //         setTimeout(() => {
+    //             console.log(i);
+    //         }, 1000 * i)
+    //     })(i)
+    // }
+
+
+    // for (var i = 0; i < 5; i++) {
+    //     setTimeout(
+    //         function (i) {
+    //             return function () {
+    //                 console.log(i);
+    //             }
+    //         }(i), 1000 * i)
+    // }
+
+</script>-
+
+</html>

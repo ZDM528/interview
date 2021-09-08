@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // function Animal(name) {  //原型链继承，不能灵活向父类构造函数传递参数
+    //     this.name = name || 'Animal'
+    //     this.sleep = function () {
+    //         console.log(this.name + "正在睡觉")
+    //     }
+    // }
+    // Animal.prototype.eat = function (food) {
+    //     console.log(this.name + "正在吃东西")
+    // }
+    // function Cat() { }
+    // Cat.prototype = new Animal('ddf')
+    // // console.log(Cat.prototype.__proto__);
+    // Cat.prototype.name = 'cat'
+    // var cat = new Cat()
+    // console.log(cat);
+    // console.log(cat.name)
+    // cat.sleep()
+    // cat.eat()
+
+
+    // function Animal(name) {  //构造函数继承,不能继承原型链上的东西
+    //     this.name = name || 'Animal'
+    //     this.sleep = function () {
+    //         console.log(this.name + "正在睡觉")
+    //     }
+    // }
+    // Animal.prototype.eat = function (food) {
+    //     console.log(this.name + "正在吃东西")
+    // }
+
+    // function Cat() {
+    //     Animal.call(this)
+    // }
+    // Cat.prototype.name = 'cat'
+    // var cat = new Cat()
+    // console.log(cat.name)
+    // cat.sleep()
+    // cat.eat()
+
+
+    // function Animal(name) {  //组合继承，既能继承原型链，也能向父类构造函数传参数，但是调用了两次父类的构造函数，父类的实例属性在子类prototype上浪费了
+    //     this.name = name || 'Animal'
+    //     this.sleep = function () {
+    //         console.log(this.name + "正在睡觉");
+    //     }
+    // }
+    // Animal.prototype.eat = function (food) {
+    //     console.log(this.name + "正在吃东西")
+    // }
+
+    // function Cat() {
+    //     Animal.call(this)
+    // }
+    // Cat.prototype = new Animal()
+    // Cat.prototype.consturctor = Cat
+    // Cat.prototype.name = 'cat'
+    // var cat = new Cat()
+    // console.log(cat.name)
+    // cat.sleep()
+    // cat.eat()
+    // console.log(cat instanceof Animal)
+    // console.log(cat instanceof Cat)
+
+
+    // function Animal(name) {  //寄生组合继承
+    //     this.name = name || 'Animal'
+    //     this.sleep = function () {
+    //         console.log(this.name + "正在睡觉");
+    //     }
+    // }
+    // Animal.prototype.eat = function (food) {
+    //     console.log(this.name + "正在吃东西")
+    // }
+
+    // function Cat() {
+    //     Animal.call(this)
+
+    // }
+
+    // var Super = function () { }
+    // Super.prototype = Animal.prototype
+    // Cat.prototype = new Super()
+    // Cat.prototype.consturctor = Cat
+    // Cat.prototype.name = 'cat'
+    // var cat = new Cat()
+    // console.log(cat.name)
+    // cat.sleep()
+    // cat.eat()
+    // console.log(cat instanceof Animal)
+    // console.log(cat instanceof Cat)
+
+
+
+
+    function Father(name) {
+        this.name = name || 'father'
+        this.getName = function () { console.log('实例方法名,打印名字为：' + this.name); }
+        this.arr = [1, 2, 3]
+    }
+    Father.prototype.hasName = function () { console.log('原型链方法名' + this.name); }
+    Father.prototype.age = 10
+
+
+    function Child1(name) {
+        this.name = name || 'danmin'
+    }
+    Child1.prototype.play = function () {
+        console.log(this.name + '正在玩');
+    }
+    Child1.name='DDD'
+    Child1.prototype=new Father()
+    let child1=new Child1('111')
+    console.log(child1.name,Child1.name);
+
+</script>
+
+</html>

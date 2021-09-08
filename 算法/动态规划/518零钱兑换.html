@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var change = function (amount, coins) {
+    //     var arr = new Array(amount + 1).fill(0)
+    //     arr[0] = 1
+    //     for (var i = 0; i < coins.length; i++) {
+    //         for (let j = coins[i]; j < amount + 1; j++) {
+    //             arr[j] = arr[j] + arr[j - coins[i]]
+    //         }
+    //     }
+    //     return arr[amount]
+    // }
+    // console.log(change(10, [2, 5, 11]))
+
+    var change = function (amount, coins) {
+        let dp = []
+        coins.unshift(0)
+        for (var i = 0; i < coins.length; i++) {
+            dp.push([])
+            for (var j = 0; j < amount + 1; j++) {
+                dp[i][j] = 0
+            }
+        }
+        dp[0][0] = 1
+        for (var i = 1; i < coins.length; i++) {
+            for (var j = 0; j < amount + 1; j++) {
+                if (j >= coins[i]) {
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i]]
+                }
+                else {
+                    dp[i][j] = dp[i - 1][j]
+                }
+            }
+        }
+        return dp[3][5]
+
+    }
+    console.log(change(5, [1, 2, 5]))
+
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+CSRF攻击：利用用户已登录网站的cookie，发起伪造请求，达到攻击目的
+
+get 型攻击:通过模拟get请求，向目标网站发起攻击
+post 型攻击：通过模拟post请求，发起表单提交，从而达到攻击目的
+
+CSRF防范：
+referer防范：通过判断请求头中的referer头，确定请求的来源，从而避免CSRF攻击（防范get型攻击）
+token防范：通过在表单请求中添加token,标识表单的合法性，来避免CSRF攻击（防范post型攻击）
+
+
+
+
+
+
+一个典型的CSRF攻击有着如下的流程：假定受信的站点A，恶意站点B
+
+用户登录 a.com，并保留了登录凭证（Cookie）
+攻击者引诱用户访问了网站b.com提供的图片链接
+如果此时站点A的Cookie未过期，那么b.com 向 a.com 发送了一个请求：a.com/act=xx，浏览器会默认携带a.com的Cookie
+a.com接收到请求后，对请求进行验证，并确认是用户的凭证，误以为是用户自己发送的请求
+a.com以用户的名义执行了act=xx
+攻击完成，攻击者在用户不知情的情况下，冒充用户，让a.com执行了自己定义的操作
+
+
+https://www.cnblogs.com/unclekeith/p/7788057.html

@@ -1,0 +1,84 @@
+高阶组件：一个包装了另外一个 React 组件的 React 组件
+高阶组件不会修改子组件，也不拷贝子组件的行为，只是通过组合的方式将子组件包装在容器组件中，是一个无副作用的纯函数
+
+HOC 可以用于以下许多用例：
+        代码重用、逻辑和引导抽象
+        渲染劫持
+        state 抽象和操作
+        props 处理
+
+        
+方式：
+属性代理：
+UserInfo
+import React from 'react'
+import WrapReact from './WrapReact'
+
+const UserInfo =(props) => {
+    return(
+        <div> userinfo test
+            {
+                console.log(props)
+            }
+        </div>
+    )
+
+}
+export default WrapReact(UserInfo)
+
+
+WrapReact
+import React from 'react'
+import UserInfo from './UserInfo'
+
+const WrapReact=(WrapComponent)=>{
+    return class Test extends React.Component{
+        handleClick=()=>{
+            console.log('click');
+        }
+        render(){
+            return <WrapComponent {...this.props} handleClick={this.handleClick}/>
+        }
+    }
+}
+
+export default WrapReact
+
+
+反向继承：
+
+import React from 'react'
+import WrapReact from './WrapReact'
+
+
+
+class UserInfo extends React.Component{
+    render(){
+        return (
+            <div>testtest</div>
+        )
+    }
+}
+
+export default WrapReact(UserInfo)
+
+
+
+
+
+import React from 'react'
+
+const WrapReact=(WrapComponent)=>{
+  
+   return class Test extends WrapComponent{
+    
+        render(){
+            return super.render()
+        }
+      
+    }
+}
+
+
+
+export default WrapReact

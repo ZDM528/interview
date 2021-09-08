@@ -1,0 +1,13 @@
+{
+    "presets": [
+        "env"
+    ],
+    "plugins": [ // babel插件  将jsx转换为js对象
+        [
+            "transform-react-jsx",
+            {
+                "prama": "React.createElement"
+            }
+        ]
+    ]
+}

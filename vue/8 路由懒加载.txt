@@ -1,0 +1,26 @@
+懒加载三种：
+1 vue异步组件
+2 es提案的import()
+3 webpack的require,ensure()
+
+1 异步组件：
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: resolve=>(require(["@/components/HelloWorld"],resolve))
+    }
+  ]
+})
+ 2 import:
+const HelloWorld = ()=>import("@/components/HelloWorld")
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component:HelloWorld
+    }
+  ]
+})

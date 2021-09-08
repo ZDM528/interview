@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    var canPlaceFlowers = function (flowerbed, n) {
+        let num = 0
+        const length = flowerbed.length
+        for (var i = 0; i < length; i = i + 1) {
+            if (flowerbed[i] === 0 && flowerbed[i + 1] !== 1 && flowerbed[i - 1] !== 1) {
+                num++
+                i++
+            }
+        }
+        return n <= num
+    }
+    console.log(canPlaceFlowers([1,0,0,0,1],1))
+
+</script>
+
+</html>

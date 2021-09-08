@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    //    fordeal面试题
+    //    function a(x){
+    //     let y=10
+    //     a.toString=function(){
+    //         return x+y
+    //     }
+    //     return a
+    // }
+    // console.log(a(10)) 
+    // 重新了函数内部的toString方法，所以返回20
+
+    // console.log(parseInt("fd12")) //NAN
+    // console.log(parseInt("123a")) //123
+
+    function test(arg){
+        const newA=[...arg]
+        return newA.sort((a,b)=>{return a.charCodeAt(0)-b.charCodeAt(0)})
+    }
+
+    console.log(test(['a4656y67','Bsghtyjt','A55676']))
+</script>
+</html>

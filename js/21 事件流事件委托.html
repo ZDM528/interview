@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <div>
+            <ul>
+                <li>520</li>
+                <li>520</li>
+                <li>520</li>
+                <li>520</li>
+                <li>520</li>
+            </ul>
+        </div>
+    </body>
+</body>
+<script>
+    // 事件流：页面中接受事件的顺序，即事件响应的顺序  包括 捕获阶段  目标阶段   冒泡阶段
+    var ul = document.querySelector('ul')
+    ul.addEventListener('click', function () {
+        alert('你点击了“520”！')
+    })
+    var div = document.querySelector('div')
+    div.addEventListener('click', function (e) {
+        alert('你点击了“520”！')
+        e.stopPropagation()
+    })
+    var body = document.querySelector('body')
+    body.addEventListener('click', function () {
+        alert('你点击了“520”！')
+    })
+</script>
+
+</html>

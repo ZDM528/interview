@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* .father {  // 第一种 
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        position: relative;
+    }
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: #000;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    } */
+    /* // 第二种 */
+    .father { 
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .son ,.son1{
+        width: 50px;
+        height: 50px;
+        background-color: #000;
+    }
+
+    /* .father {  // 第三种
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        overflow: hidden;
+
+    }
+
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: #000;
+        margin-left: 50%;
+        margin-top: 50%;
+        transform: translate(-50%, -50%);
+    } */
+</style>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <!-- <div class="son1"></div> -->
+    </div>
+</body>
+
+</html>

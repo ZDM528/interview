@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 指的是将一个接受多个参数的函数变为接受一个参数返回一个函数的固定形式，这样便于再次调用，例如f(1)(2)
+    function add() {
+        const args = [...arguments]
+        function fn() {
+            args.push(...arguments)
+            return fn
+        }
+        fn.toString = function () {
+            return args.reduce((pre, cur) => {
+                return pre + cur
+            }, 0)
+        }
+        return fn
+    }
+
+    console.log(add(1, 2)(2, 3).toString())
+
+    // function add() {
+    //     const args = [...arguments]
+    //     var sum = function () {
+    //         return args.reduce((pre, cur) => pre + cur, 0)
+    //     }
+    //     return function fn() {
+    //         args.push(...arguments)
+    //         if ([...arguments].length) {
+    //             return fn
+    //         }
+    //         else {
+    //             return sum()
+    //         }
+    //     }
+    // }
+    // console.log(add(1, 2, 3)(3, 4)())
+
+</script>
+
+</html>

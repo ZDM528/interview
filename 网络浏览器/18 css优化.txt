@@ -1,0 +1,16 @@
+删除没用的css
+尽量压缩css的体积：p{
+    margin-top:
+    margin-left:
+    margin-right 
+    margin-bottom
+}
+p{
+    margin:
+}
+避免使用复杂的选择器,层级越少越好
+提取重复样式
+减少使用昂贵的属性，所有需要浏览器操作或计算的属性相对而言都需要花费更大的代价，如少使用
+box-shadow/border-radius/filter/透明度/nth-child等
+优化重排重绘
+不要使用import(使用Import引用的css文件只有在引用它的那个css文件被下载，解析之后，浏览器才会知道还有另外一个css需要下载)

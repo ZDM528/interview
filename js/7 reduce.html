@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Array.prototype.reduce=function(callback,initialValue){
+        if(this === undefined){
+            throw TypeError('this is null')
+        }
+        if(typeof callback !=='function'){
+            throw TypeError("this is no a function")
+        }
+        const O=Object(this)
+        const len=O.length
+        let  accumulator=initialValue
+        let k=0
+        if(initialValue === undefined){
+            while(len>=k && !(k in O)){
+                k++
+            }
+            if(k>=len){
+                throw new TypeError('Reduce of empty array with no initial value')
+            }
+            accumulator = O[k++]
+        }
+        for(let i=k;i<len;i++){
+            if(i in O){
+                accumulator=callback.call(undefined,accumulator,O[i],i,O)
+            }
+        }
+        return accumulator
+    }
+
+    const arr = [2, 3, 4, 2, 3, 5]
+    const newA = arr.reduce((pre, cur) => {
+        if (cur in pre) {
+            pre[cur]++
+        }
+        else {
+            pre[cur] = 1
+        }
+        return pre
+    }, {})
+    console.log(newA)
+</script>
+
+</html>

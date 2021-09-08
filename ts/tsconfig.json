@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,  // 启用装饰器
+        "target": "es5"  // 将编译器转化为es5以上
+      }, 
+    "noEmitOnError":true, //当有错误时不生成编译的文件
+}

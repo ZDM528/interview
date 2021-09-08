@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var partition = function (s) {
+        let result = []
+        let path = []
+        function huiwen(str) {  // 判断是否是回文串
+            let nstr = str.split("")
+            nstr.reverse()
+            let rstr = nstr.join("").toString()
+            return str === rstr
+        }
+        function back(path, start) {
+            if (path.join("") === s) {
+                result.push([...path])
+                return
+            }
+            for (var i = start; i < s.length; i++) {
+                // 判断是否是回文串，如果是则回溯，如果不是则返回
+                if (huiwen(s.substring(start, i + 1))) {
+                    path.push(s.substring(start, i + 1))
+                    back(path, i + 1)
+                    path.pop()
+                }
+                else {
+                    continue
+                }
+            }
+        }
+        back(path, 0)
+        return result
+    }
+    console.log(partition("aab"))
+</script>
+
+</html>

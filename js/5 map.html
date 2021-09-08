@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Array.prototype.map = function (callback, thisArg) {
+        if (this == undefined) {
+            throw TypeError("this is null")
+        }
+        if (typeof callback !== 'function') {
+            throw TypeError("this is no a function")
+        }
+        const res = []
+        const O = Object(this)
+        for (let i = 0; i < O.length; i++) {
+            if (i in O) {
+                res.push(callback.call(thisArg, O[i], i, O))
+            }
+        }
+        return res
+    }
+
+    const arr = [{ id: 0 }, { id: 2 }, { id: 1 }]
+    const newA = arr.map(item => {
+        item.id = item.id * 3
+        return item
+    })
+
+    console.log(arr, newA)
+
+    Array.prototype.map = function (callback, thisArg) {
+        if (this === undefined) {
+
+        }
+        if (typeof callback !== 'function') {
+
+        }
+        const res = []
+        let O = this
+        for (let i = 0; i < O.length; i++) {
+            if (i in O) {
+                res.push(callback.call(thisArg, O[i], i, O))
+            }
+        }
+        return res
+
+    }
+</script>
+
+</html>

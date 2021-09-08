@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+     const arr = [-4, 0, 7, 4, 9, -5, -1, 0, -7, -1]  // 快速排序  //o(nlog2n)
+    function quickSort(arr, start, end) {
+        if (start >= end) { // 数组的长度为1,不需要排序
+            return
+        }
+        let i = start
+        let j = end
+        let priot = start  // 以第一个数为基准数
+        let key = arr[priot]
+        while (i < j) {
+            while (arr[j] >= key && i < j) {
+                j--
+            }
+            while (arr[i] <= key && i < j) {
+                i++
+            }
+            if (i < j) {
+                let temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+            }
+        }
+        arr[priot] = arr[i]
+        arr[i] = key
+        quickSort(arr, start, i - 1)
+        quickSort(arr, i + 1, end)
+    }
+    quickSort(arr, 0, arr.length - 1)
+    console.log(arr);
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+DOM的变化影响到了预算内宿的几何属性比如宽高，浏览器重新计算元素的几何属性，其他元素的几何属性也会受到影响，
+浏览器需要重新构造渲染DOM树，这个过程称之为重排 
+浏览器将受到影响的部分重新绘制在屏幕上的过程称为重绘。引起重排重绘的原因有：
+
+
+重排(回流：reflow)：浏览器窗口的改变，元素的宽高，添加或者删除dom节点，元素位置的改变等
+重绘(repaint)：元素外观比如颜色，font-size，outline等
+
+重排一定引起重绘，重绘不一定引起重排
+
+减少重排重绘：
+1.改变样式时：
+    let element = document.querySelector("#element");
+    element.style.borderLeft = " 1px";
+    element.style.borderRight = "2px";
+    element.style.borderBottom = "3px";
+    上面代码导致浏览器触发三次重排，四次访问DOM
+    可以使用cssText进行优化 ：element.style.cssText = "border-left:1px;border-right:2px;border-bottom:3px;";
+    注意这里覆盖了原来的样式，如果想保留原来的样式可以附加在cssText后面
+    element.style.cssText += ";border-left:1px;border-right:2px;border-bottom:3px;";
+2 对于多次重排的元素，比如说动画. 使用绝对定位脱离文档流，使其不影响其他元素
+3 不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局
+4 避免在document上直接进行频繁的DOM操作
+5 不在布局信息改变的时候做DOM查询
+6 使用fragment（文档碎片）
+var ary = [{title:1},{title:2},{title:3}]
+var flg = document.createDocumentFragment();//->创建一个文档碎片，相当于创建一个容器
+for(var i =0;i<ary.length;i++){
+    var cur = ary[i]
+    var  oli = document.createElement('li')
+    oli.innerHTML = `<span>${i+4}</span>${cur.title}`
+    flg.appendChild(oli)
+}
+onblur.appendChild(flg)
+flg = null
+             

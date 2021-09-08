@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [2, 1, 0, 1, 7, -6]
+    // function sortArr(arr) {
+    //     for (let gap = Math.floor(arr.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
+    //         for (let i = gap; i < arr.length; i++) {
+    //             for (let j = i - gap; j >= 0; j -= gap) {
+    //                 if (arr[j] > arr[j + gap]) {
+    //                     let temp = arr[j]
+    //                     arr[j] = arr[j + gap]
+    //                     arr[j + gap] = temp
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    function sortArr(arr) {
+        for (let gap = Math.floor(arr.length / 2); gap > 0; gap = Math.floor(gap / 2)) { //o(nlog2n)
+            for (let i = gap; i < arr.length; i++) {
+                let j = i
+                let curr = arr[j]
+                if (curr < arr[j - gap]) {
+                    while (j - gap >= 0 && curr < arr[j - gap]) {
+                        arr[j] = arr[j - gap]
+                        j -= gap
+                    }
+                    arr[j] = curr
+                }
+            }
+        }
+    }
+    sortArr(arr)
+    console.log(arr);
+</script>
+
+</html>

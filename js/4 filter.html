@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Array.prototype.filter = function (callback, thisArg) {
+        if (this == undefined) {
+            throw new TypeError("this is null")
+        }
+        if (typeof callback !== 'function') {
+            throw new TypeError("callback is not a function")
+        }
+        const res = []
+        const O = Object(this)
+        const len = O.length
+        for (let i = 0; i < len; i++) { // 会检查原型链
+            if (i in O) {  // 判断是否在O上，而不是原型链
+                if (callback.call(thisArg, O[i], i, O)) {
+                    res.push(O[i])
+                }
+            }
+        }
+        return res
+    }
+    const arr = [2, 4, 5]
+    const newA = arr.filter(item => {
+        return item % 2 === 0
+    })
+    console.log(newA)
+
+</script>
+
+</html>

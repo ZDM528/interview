@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* overflow: hidden; */
+    /* .father{
+        border: 1px solid pink;
+        overflow: hidden;
+    }
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+    }
+    .son1{
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        float: left;
+    } */
+
+
+
+    /* clear */
+    /* .father{
+        border: 1px solid pink;
+     
+    }
+
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+    }
+    .son1{
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        float: left;
+    }
+    .clear{
+        clear: both;
+    } */
+
+
+    /* before after */
+    .father{
+        border: 1px solid pink;
+    }
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+    }
+    .son1{
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        float: left;
+    }
+    .father::before,.father::after{
+        content:'';
+        width: 0;
+        height: 0; 
+        display: block; 
+        visibility: hidden;
+        clear: both;
+    }
+  
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son1"></div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

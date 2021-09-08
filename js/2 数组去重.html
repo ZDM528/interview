@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = [1, 2, 3, 1, 1, 2, 3, 4, 5]
+    var newA = Array.from(new Set(arr))
+    console.log(newA)
+
+
+
+    var obj = {}
+    var newArr = []
+    for (var i = 0; i < arr.length; i++) {
+        if (!obj[arr[i]]) {
+            obj[arr[i]] = true
+            newArr.push(arr[i])
+        }
+    }
+    console.log(newArr)
+
+
+
+
+
+    var arr1 = []
+    for (var i of arr) {
+        if (arr1.indexOf(i) === -1) {
+            arr1.push(i)
+        }
+    }
+    console.log(arr1)
+
+
+
+
+    var arr2 = arr.filter((item, index) => {
+        return arr.indexOf(item) === index
+    })
+    console.log(arr2)
+
+
+    
+
+
+</script>
+
+</html>

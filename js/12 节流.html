@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="debounce(fn,time)">点击</button>
+</body>
+<script>
+    let time = 1000
+    function fn() {
+        console.log('fn')
+    }
+
+    let timeout = null
+    let flag = true
+    function debounce(fn, time) {
+        if (flag) {
+            flag=false
+            timeout = setTimeout(function () {
+                fn()
+                flag = true
+            }, time)
+        }
+
+    }
+
+
+
+
+
+
+</script>
+
+</html>

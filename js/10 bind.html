@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+</body>
+<script>
+    Function.prototype.bind = function (context, ...args) {
+        if (typeof this !== 'function') {
+            throw new TypeError('error')
+        }
+        var self = this
+        return function F() {
+            if (this instanceof F) {
+                return new self(...args, ...arguments)
+            }
+            return self.apply(context, [...args, ...arguments])
+        }
+    }
+
+    function foo(name) {
+        this.name = name
+        // console.log(this)
+    }
+
+    var obj = {age:'13'}
+    var bar = foo.bind(obj,'obj')
+    new bar('d')
+
+</script>

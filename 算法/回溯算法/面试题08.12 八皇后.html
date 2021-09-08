@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var solveNQueens = function (n) {
+        let result = []
+        let path = []
+        let flag = false
+        let useQueen = new Array(n).fill(false)
+        function queue(path) {
+            if (path.length === n) {
+                var newP = [...path]
+                for (var i = 0; i < newP.length; i++) {
+                    let queen = new Array(n).fill(".")
+                    queen[newP[i]] = "Q"
+                    var str = queen.join("")
+                    newP[i] = str
+                }
+                result.push(newP)
+                return
+            }
+            for (var i = 0; i < n; i++) {
+                flag = false
+                if (!useQueen[i]) {
+                    for (var j = 0; j < path.length; j++) {  // 全排列之前的限制条件
+                        flag = (Math.abs(i - path[j]) === Math.abs(path.length - j))
+                        if (flag) break
+                    }
+                    if (!flag) {
+                        path.push(i)
+                        useQueen[i] = true
+                        queue(path)
+                        path.pop()
+                        useQueen[i] = false
+                    }
+                }
+            }
+        }
+        queue(path)
+        return result
+    }
+    console.log(solveNQueens(5))
+</script>
+
+</html>

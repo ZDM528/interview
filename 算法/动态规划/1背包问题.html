@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function bag(p, w, v) {
+    //     var dp = new Array(v + 1).fill(0)
+    //     for (var i = 0; i < w.length; i++) {
+    //         for (var j = w[i]; j <= 8; j++) {
+    //             if (w[i] === 2) {
+    //                 console.log(dp[j - w[i]])
+    //             }
+    //             dp[j] = Math.max(p[i] + dp[j - w[i]], dp[j])
+    //         }
+    //     }
+    //     return dp[8]
+    // }
+    // console.log(bag([1, 2, 5, 6], [2, 3, 4, 5], 8))
+
+    function bag(p, w, v) {
+        p.unshift(0)
+        w.unshift(0)
+        var dp = []
+        for (var i = 0; i < w.length; i++) {
+            dp.push([])
+            for (var j = 0; j <= v; j++) {
+                dp[i][j] = 0
+            }
+        }
+        for (var i = 1; i < w.length; i++) {
+            for (var j = 0; j <= v; j++) {
+                if (j >= w[i])
+                    dp[i][j] = Math.max(p[i] + dp[i - 1][j - w[i]], dp[i - 1][j])
+                else {
+                    dp[i][j] = dp[i - 1][j]
+                }
+            }
+        }
+        return dp[4][8]
+    }
+
+    console.log(bag([3,4,5,6], [2,3,4,5], 8))
+</script>
+
+</html>

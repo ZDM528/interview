@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function read(f) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(f)
+            }, 1000)
+        })
+    }
+
+
+    function* foo() {
+        const f = yield read('1.txt')
+        const f1 = yield read('2.txt')
+        const f2 = yield read('3.txt')
+        console.log(f, f1, f2);
+    }
+
+    var it = foo()
+    var res = it.next().value
+    res.then(value => {
+        var res1 = it.next(value)
+        return res1.value
+    }).then(data => {
+        var res2 = it.next(data)
+        return res2.value
+    }).then(res => {
+        var res3 = it.next(res)
+        return res3.value
+    })
+
+
+</script>
+
+</html>

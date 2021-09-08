@@ -1,0 +1,7 @@
+link  xhtml文件    @import css文件
+加载的区别：当浏览器被浏览时。link 引用的css会同时被加载，而import引用的css需等到页面加载完才加载
+link 兼容性好，而import兼容性差
+
+jpg png
+jpg压缩时消耗cpu大
+png解压时消耗cpu小

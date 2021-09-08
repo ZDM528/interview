@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #canvas {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        transform: translate(-50%, 0);
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <canvas id="canvas" width='200px' height='400px'></canvas>
+</body>
+<script>
+
+    var canvas = document.querySelector("#canvas")
+    let arr = []
+    window.onload = function () {
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")
+            setInterval(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                for (var i = 0; i < arr.length; i++) {
+                    arr[i].deg += 30
+                    arr[i].x = arr[i].styleX + Math.sin(arr[i].deg * Math.PI / 180) * arr[i].step * 2
+                    arr[i].y = arr[i].styleY - (arr[i].deg * Math.PI / 180) * arr[i].step * 2
+                    console.log(arr[i].y <= arr[i].r);
+                    if (arr[i].y <= arr[i].r) {
+                        arr.slice(i, 1)
+                    }
+                }
+
+
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].y <= arr[i].r) {
+                        arr.slice(i, 1)
+                    }
+                    ctx.save()
+                    ctx.fillStyle = `rgba(${arr[i].red},${arr[i].blue},${arr[i].green},${arr[i].opacity})`
+                    ctx.beginPath()
+                    ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 360 * Math.PI / 180)
+                    ctx.fill()
+                    ctx.restore()
+                }
+            }, 100)
+
+
+            setInterval(() => {
+                let r = Math.random() * 6 + 2
+                let x = Math.random() * canvas.width
+                let y = canvas.height - r / 2
+                let red = Math.random() * 255
+                let blue = Math.random() * 255
+                let green = Math.random() * 255
+                let deg = 0
+                let step = Math.random() * 6 + 10
+                let styleX = x
+                let styleY = y
+                arr.push({
+                    x,
+                    y,
+                    r,
+                    red,
+                    blue,
+                    green,
+                    opacity: 1,
+                    deg,
+                    styleX,
+                    styleY,
+                    step
+                })
+            }, 100)
+        }
+    }
+
+
+</script>
+
+</html>

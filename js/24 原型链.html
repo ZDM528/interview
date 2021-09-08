@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Foo() {
+        this.name = "foo"
+    }
+    Foo.prototype.getName = function () { return this.name }
+    function Bar() {
+        this.age = "18"
+    }
+    var foo = new Foo()
+    Bar.prototype = Object.create(foo)
+    console.log(Bar.prototype.__proto__ ===foo)
+    Bar.prototype.getAge = function () { return this.age }
+    var bar = new Bar()
+    console.log(bar.name)
+    console.log(bar.__proto__ === Bar.prototype)
+
+</script>
+
+</html>

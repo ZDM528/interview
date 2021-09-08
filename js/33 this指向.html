@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // var  length = 10
+    // function fn() {
+    //     console.log(this.length)  // this 指向window ,如果let length=10 则window下没有length这个属性  // 10
+    // }
+    // var obj = {
+    //     length: 5,
+    //     method: function (fn) {
+    //         fn()                 // window下调用的
+    //         arguments[0]() //2
+    //     }
+    // }
+    // obj.method(fn, 1)
+
+
+
+
+    // var obj = {
+    //     a: 10,
+    //     b: this.a + 10, //这里的this指向window(全局)，a为undefined  ==>  undefined + 20 = NaN
+    //     fn: function () {
+    //         return this.a
+    //     }
+    // }
+    // console.log(obj.b)       //NaN
+    // console.log(
+    //     obj.fn(),         //10
+    //     obj.fn            //fn
+    // )
+
+
+
+
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+        console.log(this)      //与下面的this是一样的，都是Person
+    }
+    Person()             //this 指向window
+    Person.prototype.getName = function () {
+        console.log(this)   //与上面的this是一样，都是Person
+    }
+    var p1 = new Person("test", 18)
+    console.log(p1)
+    p1.getName()
+
+
+
+
+    // function foo() {
+    //     console.log(this.a)
+    // }
+    // var a = 2
+    // var o = {
+    //     a: 3,
+    //     foo: foo
+    // };
+    // var p = { a: 4 }
+    // o.foo()                //3
+    // (p.foo = o.foo)();      //2
+    // /**
+    //     相当于： 
+    //     function w(){
+    //         p.foo = o.foo;
+    //     }
+    //     w();
+    //     此时的constructor指向window,调用这个w，这个w是在window下创建的，相当于
+    //     调用window.w()，所以constructor指向window。
+    // */
+
+    // p.foo = o.foo;
+    // p.foo();    //4     函数由p执行，那么constructor指向的就是对象p，谁调用就指向谁0.0
+    //         //this也就指向p， 因此this.a === p.a
+
+
+
+    // var a = 20; 
+    //         var obj = {
+    //             a: 10,
+    //             getA: function () {
+    //                 return this.a;
+    //               }
+    //         }
+    //         console.log(obj.getA());    //10
+    //         var test = obj.getA;
+    //         console.log(test());        //20   独立调用test
+
+
+    // var obj = {
+    //     data: [1, 2, 3, 4, 5],
+    //     data2: [1, 2, 3, 4, 5],
+    //     fn: function () {
+    //         console.log("--test--");
+    //         console.log(this);   //{data: Array(5), data2: Array(5), fn: ƒ, fn2: ƒ}
+    //         return this.data.map(function (item) {
+    //             console.log(this);     //  -->  window
+    //             return item * 2;
+    //         });
+    //     },
+    //     fn2: function () {
+    //         console.log("---test2---");
+    //         console.log(this);   //{data: Array(5), data2: Array(5), fn: ƒ, fn2: ƒ}
+    //         return this.data.map(item => {
+    //             console.log(this);   //  --> obj {data: Array(5), data2: Array(5), fn: ƒ, fn2: ƒ}
+    //             return item * 2;
+    //         });
+    //     }
+    // };
+    // obj.fn()
+    // obj.fn2()
+
+
+    // var x = 10
+    // var foo = {
+    //     x: 20,
+    //     bar: function () {
+    //         var x = 30;
+    //         console.log(this.x)
+
+    //     }
+    // };
+    // // foo.bar() // 20
+    // (foo.bar)()  //20
+    // (foo.bar = foo.bar)() // 10
+    // (foo.bar,foo.bar)() // 10
+
+
+
+    // var name = "the window"
+    // var object = {
+    //     name: "My Object",
+    //     getName: function () {
+    //         return this.name
+    //     }
+    // }
+
+    // object.getName()   //"My Object"
+    // (object.getName)() //"My Object"
+    // (object.getName = object.getName)()   //"the window"，函数赋值会改变内部this的指向，这也是为什么需要在 React 类组件中为事件处理程序绑定this的原因;
+
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Array.from(document.querySelectorAll('div'))
+    Array.prototype.slice.call(document.querySelectorAll('div'))  // [].slice.call(document.querySelectorAll('div'))
+    // [...document.querySelectorAll('div')]  // 实现了interator接口才可以
+    // var ArrayLikeObj = {"0": 1, "1": 2, length: 2} 
+    // var result = [...ArrayLikeObj ] // 报错，没实现接口
+
+    Array.prototype.concat.apply([], document.querySelectorAll('div'));
+</script>
+
+</html>

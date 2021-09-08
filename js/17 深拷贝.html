@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function isObject(source) {
+    //     return typeof source === "object" && source != null
+    // }
+    // function cloneDeep(source, hash = new WeakMap()) {
+    //     if (!isObject(source)) return source  // 如果传入进来的是null,返回null
+    //     if (hash.has(source)) return hash.get(source);
+    //     let target = Array.isArray(source) ? [] : {}
+    //     hash.set(source, target)
+
+
+    //     let symKeys = Object.getOwnPropertySymbols(source)  // 拷贝Symbol
+    //     if (symKeys.length) {
+    //         symKeys.forEach(symKey => {
+    //             if (isObject(source[symKey])) {
+
+    //                 target[symKey] = cloneDeep(source[symKey], hash);
+    //             } else {
+    //                 target[symKey] = source[symKey];
+    //             }
+    //         })
+    //     }
+
+    //     for (var key in source) {  // 会遍历原型链上的属性
+    //         if (Object.prototype.hasOwnProperty.call(source, key)) {  // 不拷贝原型链上的属性
+    //             if (isObject(source[key])) {
+    //                 target[key] = cloneDeep(source[key], hash)
+    //             }
+    //             else {
+    //                 target[key] = source[key]
+    //             }
+    //         }
+    //     }
+
+    //     return target
+    // }
+
+
+
+
+
+    function cloneDeep(source) {
+        if (!(typeof source === 'object' && source != null)) return source
+        let target = source instanceof Array ? [] : {}
+        for (var key in source) {
+            if (source.hasOwnProperty(key)) {  //hasOwnProperty 检测一个对象是否是自身的属性，不会遍历原型链上的属性
+                if (typeof source[key] === 'object' && source[key] != null) {
+                    target[key] = cloneDeep(source[key])
+                }
+                else {
+                    target[key] = source[key]
+                }
+            }
+        }
+        return target
+    }
+
+    var obj = {
+        a: {
+            b: 'b'
+        },
+        c: 'c'
+    }
+
+    var copy = cloneDeep(obj)
+    console.log(copy)
+
+
+
+
+
+
+
+</script>
+
+</html>

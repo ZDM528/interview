@@ -1,0 +1,16 @@
+MVVM分为Model、View、ViewModel三者。
+
+Model 代表数据模型，数据和业务逻辑都在Model层中定义
+View 代表UI视图，负责数据的展示；
+ViewModel 负责监听 Model 中数据的改变并且控制视图的更新，处理用户交互操作；
+Model 和 View 并无直接关联，而是通过 ViewModel 来进行联系的，Model 和 ViewModel 之间有着双向数据绑定的联系。
+因此当 Model 中的数据改变时会触发 View 层的刷新，View 中由于用户交互操作而改变的数据也会在 Model 中同步。
+
+
+
+vue是采用数据劫持配合发布者-订阅者模式的方式，通过Object.defineProperty来劫持各个属性的getter,setter,
+在数据变动时，发布信息给依赖收集器（watcher），去通知观察者，执行对应的回调函数，去更新视图
+MVVM作为绑定的入口，整合observer,complier和watcher三者，通过Observer来监听model数据变化，通过complier来解析
+编译指令，最终利用Watcher搭建起observer,complier的桥梁，达到数据变化-视图更新，视图交互变化-数据model变更的
+双向绑定效果
+

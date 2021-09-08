@@ -1,0 +1,7 @@
+路由的钩子函数总结有6个
+
+全局的路由钩子函数：beforeEach、afterEach(to,from,next)
+
+单个的路由钩子函数：beforeEnter(to,from,next)
+
+组件内的路由钩子函数：beforeRouteEnter、beforeRouteLeave、beforeRouteUpdate

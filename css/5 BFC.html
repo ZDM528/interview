@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* BFC 外边距重叠 */
+    /* .father{
+        width: 200px;
+        height: 200px;
+        margin-top: 100px;
+        background-color: red;
+        overflow: hidden;  
+    }
+    .son{
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+        background-color:green;
+    } */
+
+
+    /* BFC 子元素浮动，父元素高度塌陷 */
+    /* 1 overflow: hidden
+    2 float: left;
+    3 display: inline-block */
+/* 
+    .father {
+        border: 1px solid green;
+        overflow: hidden;
+        float: left;
+        display: inline-block;
+    }
+
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+    } */
+
+
+
+    /* BFC清除浮动 */
+    .father{
+        overflow: hidden;
+    }
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+    }
+    .son1{
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <!-- <div class="father">
+        <div class="son">
+        </div>
+    </div>     -->
+
+
+<!-- 
+    <div class="father">
+        <div class="son">
+        </div>
+    </div> -->
+
+
+
+    <div class="father">
+        <div class="son"></div>
+        <div class="son1"></div>
+    </div>
+</body>
+
+</html>

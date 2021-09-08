@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Array.prototype.forEach=function(callback,thisArg){
+    //     if(this === undefined){
+    //         throw TypeError("this is null")
+    //     }
+    //     if(typeof callback !== 'function'){
+    //         throw TypeError('this is no a function')
+    //     }
+    //     const O=Object(this)
+    //     for(let i=0;i<O.length;i++){
+    //         if(i in O){
+    //             callback.call(thisArg,O[i],i,O)
+    //         }
+    //     }
+    // }
+
+    const arr=[{
+        id:1
+    },{
+        id:2
+    }]
+    arr.forEach(item=>(
+        item.id=item.id * 2
+    ))
+    console.log(arr);
+</script>
+</html>

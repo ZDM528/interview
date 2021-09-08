@@ -1,0 +1,27 @@
+原始事件模型（DOM0级）:
+事件发生后没有传播的概念，没有事件流。事件发生,马上处理,完事,就这么简单。
+监听函数只是元素的一个属性值，通过指定元素的属性值来绑定监听器。书写方式有两种：
+① HTML代码中指定属性值：<input type=”button” onclick="func1()" />
+② 在js代码中指定属性值：document.getElementsByTagName(‘input’)[0].onclick = func1
+优点：所有浏览器都兼容
+缺点：1）逻辑与显示没有分离；
+2）相同事件的监听函数只能绑定一个，后绑定的会覆盖掉前面的，如：a.onclick = func1; a.onclick = func2;将只会执行func2中的内容。
+3）无法通过事件的冒泡、委托等机制（后面系列会讲到）完成更多事情。
+
+IE事件模型：
+监听事件：attachEvent( "onclick","handler")，其中evetType为事件的类型，如onclick，注意要加’on’。
+解除事件：detachEvent("eventType","handler" )
+
+DOM2事件模型：
+事件流：事件俘获，处理，冒泡阶段
+addEventListener("click","handler","true|false")
+
+
+以上便是事件的三种模型，我们在开发的时候需要兼顾IE与非IE浏览器，所以注册一个监听器应该这样写:
+var a = document.getElementById('a');
+if(a.attachEvent){
+a.attachEvent('onclick',func);
+}
+else{
+a.addEventListener('click',func,false);
+}

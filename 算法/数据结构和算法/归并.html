@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Merge(a, b) {  // 分治思想  //o(nlog2n)
+        let n = a.length;
+        let m = b.length;
+        let c = [];
+        let i = 0;
+        let j = 0;
+        while (i < n && j < m) {
+            if (a[i] <= b[j]) {
+                c.push(a[i])
+                i++;
+            } else {
+                c.push(b[j])
+                j++;
+            }
+        }
+        while (i < n) {
+            c.push(a[i]);
+            i++;
+        }
+        while (j < m) {
+            c.push(b[j]);
+            j++;
+        }
+        return c;
+    }
+
+    function merge_sort(arr) {
+        if (arr.length === 1) return arr;
+        let mid = Math.floor(arr.length / 2);
+        let left = arr.slice(0, mid);
+        let right = arr.slice(mid);
+        return Merge(merge_sort(left), merge_sort(right));
+    }
+
+    console.log(merge_sort([2, 1, 4, 3, 5, 6, 7, 8, 3, 4]))
+</script>
+
+</html>

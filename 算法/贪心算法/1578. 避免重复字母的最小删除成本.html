@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var minCost = function (s, cost) {
+        let num=0
+        for(var i=0;i<s.length;i++){
+            if(s[i]===s[i+1]){
+                let costNum=cost[i]
+                let maxCost=cost[i]
+                while(s[i]===s[i+1]){
+                     maxCost=Math.max(maxCost,cost[i+1])
+                     costNum += cost[i+1]
+                     i++
+                }
+                 num=num+(costNum-maxCost)
+            }
+        }
+        return num
+    }
+
+    console.log(minCost("aabaa", [1,2,3,4,1]))
+</script>
+
+</html>

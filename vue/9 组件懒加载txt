@@ -1,0 +1,25 @@
+1 异步组件：
+export default {
+  components:{
+    "One-com":resolve=>(['./one'],resolve)
+  },
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
+
+
+2 import
+const One = ()=>import("./one");
+export default {
+  components:{
+    "One-com":One
+  },
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}

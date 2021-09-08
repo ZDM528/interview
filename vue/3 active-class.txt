@@ -1,0 +1,9 @@
+active-class是vue-router模块的router-link组件中的属性，用来做选中样式的切换
+
+
+1、直接在路由js文件中配置linkActiveClass
+export default new Router({
+  linkActiveClass: 'active',
+})
+2、在router-link中写入active-class
+<router-link to="/home" class="menu-home" active-class="active">首页</router-link>

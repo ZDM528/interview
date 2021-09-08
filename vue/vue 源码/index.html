@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App">
+        <!-- <div>{{person.name}}</div>
+        <div>{{person.age}}</div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul> -->
+        <div>{{msg}}</div>
+        <div v-text='msg'></div>
+        <div v-html='htmlStr'></div>
+        <input v-model='msg' type="text" />
+        <button v-on:click="handleClick">点击</button>
+        <div v-bind:value="bind"></div>
+    </div>
+</body>
+<script src="./Observer.js"></script>
+<script src="./Mvue.js"></script>
+<script>
+    let obj = { a: 1, b: 2, c: { d: 3 } }
+    // let nbj = { ...obj } 
+    // nbj.c.d = 33
+    // console.log(obj, nbj);
+    // const { a: c, ...b } = obj
+    // b.c.d = 4
+    // console.log(obj, b);
+    // let assign = Object.assign({}, obj)
+    // obj.a = 5
+    // obj.c.d = 66s
+    // console.log(assign, obj);
+
+
+
+    // const arr = [1, 2]
+    // arr.map((item, index) => {
+    //     Object.defineProperty(arr, index, {
+    //         get() {
+    //             console.log('get', index);
+    //         },
+    //         set() {
+    //             console.log('set', index);
+    //         }
+    //     })
+    // })
+    // arr[1] = '4'
+    // arr.push(4)
+    // console.log(arr[2]);
+    // const arratMethods = [  // 通过监听数组原型上的方法，进而进行数组的数据劫持
+    //     "push",
+    //     "pop",
+    //     "shift",
+    //     "unshift",
+    //     "splice",
+    //     "sort",
+    //     "reverse"
+    // ];
+    // const arrayProto = Object.create(Array.prototype)
+    // arratMethods.forEach((method) => {
+    //     const origin = Array.prototype[method];
+    //     arrayProto[method] = function () {
+    //         console.log("run method", method);
+    //         console.log(this, arguments);
+    //         return origin.apply(this, arguments);
+    //     };
+    // });
+    // const list = []
+    // list.__proto__ = arrayProto
+    // list.push(2)
+    // list.shift(3) 
+
+
+
+    // let target = {
+    //     a: {
+    //         b: 'b'
+    //     }
+    // }
+    // var pro = new Proxy(target, {  //用proxy方式，解决了defineProperty的缺点
+    //     get: function (target, propKey, receiver) {
+    //         console.log(target, propKey, receiver)
+    //         return target[propKey]
+    //     },
+    //     set: function (target, propKey, receiver) {
+    //         console.log(target, propKey, receiver)
+    //         target[propKey] = receiver
+    //     }
+    // })
+    // pro.a = 3
+    // pro.b=4
+    // console.log(pro.a);
+
+
+
+
+    const vm = new Mvue({
+        el: "#App",
+        data: {
+            person: {
+                name: 'test',
+                age: 1
+            },
+            msg: 'magTest',
+            htmlStr: '<h1>testtest</h1>',
+            bind: 'bind'
+        },
+        methods: {
+            handleClick() {
+                this.msg = "dfrghfg"
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // 基本类型：string number null boolean symbol undefined    
+    // 引用类型：array function obj
+    // typeof  instanceof
+    // constructor
+    function F(){}
+    var f=new F()
+    console.log(''.constructor===String)
+    console.log(true.constructor===Boolean)
+    console.log((123).constructor===Number)
+    console.log([].constructor===Array)
+    console.log(F.constructor === Function)
+    console.log({}.constructor===Object)
+    // console.log(null.constructor)
+    // console.log(undefined.constructor) 
+    // object.prototype.toString()
+    console.log(Object.prototype.toString.call(''))
+    console.log(Object.prototype.toString.call(123))
+    console.log(Object.prototype.toString.call(true))
+    console.log(Object.prototype.toString.call(f))
+    console.log(Object.prototype.toString.call({}))
+    console.log(Object.prototype.toString.call([]))
+    console.log(Object.prototype.toString.call(null))
+    console.log(Object.prototype.toString.call(undefined))
+    console.log(Object.prototype.toString.call(Symbol()))
+    console.log(Object.prototype.toString.call(new Function()))
+    console.log(Object.prototype.toString.call(new Date()))
+
+</script>
+</html>

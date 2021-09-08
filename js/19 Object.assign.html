@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const arr=[1,2,[3,4]]
+    const newA=Object.assign({},arr)
+    newA[0]=111
+    arr[2][0]=333
+    console.log(newA)
+    console.log(arr)
+
+    // const obj={
+    //     a:{
+    //         b:'b'
+    //     },
+    //     c:'c'
+    // }
+    // const newO=Object.assign({},obj)
+    // newO.a.b='df'
+    // console.log(obj,newO)
+</script>
+</html>

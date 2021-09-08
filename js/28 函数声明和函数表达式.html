@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // test1()  // test2  函数提升
+    // var test1 = () => {
+    //     console.log('test1')
+    // }
+    // function test1() {
+    //     console.log('test2')
+    // }
+    // test1()  // test1
+
+    // 因为fun test1 不管在什么时候声明，都会发送函数声明提升，所以如果有函数表达式，永远会覆盖函数声明
+
+
+
+    // test1()  // test2  函数提升
+    // let  test1 = () => {
+    //     console.log('test1')
+    // }
+
+    // function test1() {
+    //     console.log('test2')
+    // }
+    // test1()  // 报错 let暂时性死区
+
+    // var a = "123"
+    // console.log(a)
+    // let a = "111" //报错  暂时性死区
+
+
+
+
+   
+    // test = "test"
+    // function foo() {
+    //     getName = function () {  // 没声明都是在全局  在严格模式下就不行
+    //         console.log('foo')
+    //     }
+    // }
+
+    //  {
+    //     var getName = function () {  // var 全局
+    //         console.log('footest')
+    //     }
+    // }
+    // getName()  // footest
+    // console.log(test) //test
+    // foo()
+    // getName()  // foo
+
+
+
+
+    {
+        let getName = function () {  // var 全局
+            console.log('footest')
+        }
+    }
+    test = "test"
+    function foo() {
+        getName = function () {  // 没声明都是在全局  在严格模式下就不行
+            console.log('foo')
+        }
+    }
+    getName()  // 报错  let getName 为块级作用域
+    console.log(test) //test
+    foo()
+    getName()  // 已经调用了 foo，所以全局上有getName()
+</script>
+
+</html>

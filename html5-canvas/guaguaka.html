@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .wrap,
+    ul,
+    ul>li {
+        width: 100%;
+        height: 100%;
+    }
+
+    ul>li {
+        background: url('./images/a.jpg');
+        background-size: 100% 100%;
+    }
+
+    canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <canvas id='canvas'></canvas>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+
+</body>
+<script>
+
+    window.onload = function () {
+        let flag = 0
+        var canvas = document.querySelector("#canvas")
+        canvas.width = document.documentElement.clientWidth
+        canvas.height = document.documentElement.clientHeight
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d')
+            var img = new Image()
+            img.src = './images/b.jpg'
+            img.onload = function () {
+                draw()
+            }
+            function draw() {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+                canvas.addEventListener("touchstart", (ev) => { // 手机端
+                    var touch = ev.changedTouches[0]
+                    var x = touch.clientX - canvas.offsetLeft
+                    var y = touch.clientY - canvas.offsetTop
+                    ctx.lineWidth = 40
+                    ctx.lineCap = 'round'
+                    ctx.lineJoin = 'round'
+                    ctx.globalCompositeOperation = "destination-out"
+                    ctx.save()
+                    ctx.beginPath()
+                    ctx.moveTo(x, y)
+                    ctx.lineTo(x + 1, y + 1)
+                    ctx.stroke()
+                    ctx.restore()
+                    console.log(x, y)
+
+                })
+
+                canvas.addEventListener("touchmove", (ev) => { // 手机端
+                    var touch = ev.changedTouches[0]
+                    var x = touch.clientX - canvas.offsetLeft
+                    var y = touch.clientY - canvas.offsetTop
+                    ctx.lineTo(x + 1, y + 1)
+                    ctx.stroke()
+                    console.log(x, y)
+                    console.log(ev)
+                })
+            }
+
+
+            canvas.addEventListener("touchend", () => {
+
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+                let allPx = imageData.width * imageData.height
+                for (var i = 0; i < allPx; i++) {
+                    if (imageData.data[4 * i + 3] === 0) {
+                        flag++
+                    }
+                }
+                if (flag >= allPx / 2) {
+                    canvas.style.opacity = 0
+                }
+            })
+        }
+    }
+</script>
+
+
+</html>
