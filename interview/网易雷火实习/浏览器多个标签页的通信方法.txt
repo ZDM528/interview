@@ -1,0 +1,43 @@
+1、localStorage
+一个窗口更新localStorage
+另一个窗口监听window对象的”storage”事件，来实现通信。
+localStorage.setItem('aaa', (Math.random()*10).toString())
+// 其他窗口监听storage事件
+window.addEventListener("storage", function (e) {
+  console.log(e)
+  console.log(e.newValue)
+})
+注：两个页面要同源（URL的协议、域名和端口相同）
+
+
+
+2、WebSocket
+var ws = new WebSocket("ws://localhost:3000/")
+ws.onopen = function (event) {
+  // 或者把此方法注册到其他事件中，即可与其他服务器通信
+  ws.send({now : Date.now()}); // 通过服务器中转消息
+};
+ws.onmessage = function (event) {
+  // 消费消息
+  console.log(event.data);
+}
+
+优点:
+不仅能在不同窗口之间，还能跨浏览器，兼容性最佳。
+缺点:
+需要消耗点服务器资源
+
+
+3 cookie + setInterval【差】
+在页面A设置一个使用 setInterval 定时器不断刷新，检查 Cookies 的值是否发生变化，如果变化就进行刷新的操作。
+
+缺点：相当浪费资源
+
+4 postMessage
+postMessage()方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。
+otherWindow
+其他窗口的一个引用，比如iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames。
+.message
+要传递的数据，由于部分浏览器只能处理字符串参数，所以我们在传递参数的时候需要使用JSON.stringify()方法对对象参数字符串化
+targetOrigin
+通过窗口的origin属性来指定哪些窗口能接收到消息事件
