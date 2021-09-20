@@ -1,0 +1,32 @@
+ css执行顺序：
+ link visit hover active
+ link:未点击颜色
+ visit：点击后颜色
+ hover：滑动
+ active:正点击
+
+ img script可跨域
+ xmlhttpRequest:不可跨域
+ cookie不可跨域传递
+ 跨域请求携带cookie：
+　　需要加上:withCredentials:true,
+
+CORS请求分类：
+简单请求，复杂请求
+
+简单请求：
+HTTP方法是下列之一:  HEAD，GET，POST
+HTTP头包含:
+Accept
+Accept-Language
+Content-Language
+Last-Event-ID
+Content-Type，但仅能是下列之一:
+application/x-www-form-urlencoded
+multipart/form-data
+text/plain
+
+
+其他不满足以上请求的均为复杂请求
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+https://javascript.ruanyifeng.com/bom/cors.html
