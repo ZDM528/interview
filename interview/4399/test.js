@@ -9,7 +9,7 @@ console.log(0 == true) // false
 
 // <!DOCTYPE>对大小写不敏感，doctype也可，非html标签元素，渲染
 
-//DOMContenLoaded 先于load执行
+// DOMContenLoaded 先于load执行
 // dom文件加载的步骤为：
 // 1,解析HTML结构。
 // 2,DOM树构建完成。//DOMContentLoaded
