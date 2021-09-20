@@ -12,3 +12,7 @@ CDN
 事件委托，减少事件注册
 webpack  url-loader/file-loader 将一些图片转换为base64，减少http请求 ，gzip压缩，代码分离 
 框架优化vue:v-if v-show key  路由懒加载
+长列表-虚拟列表
+
+
+https://juejin.cn/post/7001879601156718605

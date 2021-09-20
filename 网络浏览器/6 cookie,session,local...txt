@@ -1,4 +1,3 @@
-
 Cookie和session都可用来存储用户信息，cookie存放于客户端，session存放于服务器端，
 因为cookie存放于客户端有可能被窃取，所以cookie一般用来存放不敏感的信息，比如用户设置的网站主题，
 敏感的信息用session存储，比如用户的登陆信息，session可以存放于文件，数据库，内存中都可以，

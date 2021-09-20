@@ -7,3 +7,17 @@
 
 
 浏览器的渲染过程
+1 将html解析成dom树，dom树的解析是深度遍历过程，当前节点的所有子节点都构建完后才会去构建当前节点的下一个兄弟节点
+2 将css解析为cssom树，即css规则树(css解析不会阻塞html的解析，渲染会阻塞浏览器的渲染)
+3 解析js脚本（阻塞Html的解析，渲染）
+4 根据dom树和cssom树形成render dom 树，计算每个frame的位置信息，即layout 和 reflow 过程
+  Rendering Tree 渲染树并不等同于 DOM 树，因为一些像Header或display:none的东西就没必要放在渲染树中了。
+ 
+
+
+
+https://juejin.cn/post/6844903815758479374
+
+
+display ：none 不占据位置，引起重排
+visiblity:hidden 占据位置，不会引起重排，只引起重绘
