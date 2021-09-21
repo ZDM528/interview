@@ -17,9 +17,9 @@ CORS请求分类：
 简单请求：
 HTTP方法是下列之一:  HEAD，GET，POST
 HTTP头包含:
-Accept
-Accept-Language
-Content-Language
+Accept；
+Accept-Language；
+Content-Language；
 Last-Event-ID
 Content-Type，但仅能是下列之一:
 application/x-www-form-urlencoded
