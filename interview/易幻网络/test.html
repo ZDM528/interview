@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 1  https://blog.csdn.net/weixin_44138611/article/details/89139475
+    function showCase(value) {
+        switch (value) {
+            case 'A':
+                console.log('Case A');
+                break;
+            case 'B':
+                console.log('Case B');
+                break;
+            case undefined:
+                console.log('undefined');
+                break;
+            default:
+                console.log('Do not know!');
+        }
+    }
+    showCase(new String('A'));
+
+    //2   https://blog.csdn.net/weixin_44138611/article/details/89139475
+    [1, 2, 3].map(parseInt)
+
+    //3
+    const srcArr = [
+        { id: 1, pid: 1 },
+        { id: 2, pid: 1 },
+        { id: 3, pid: 2 },
+        { id: 4, pid: 3 },
+        { id: 5, pid: 6 },
+        { id: 6, pid: 1 },
+        { id: 7, pid: 5 }
+    ]
+
+    function handleArrToParentAndSon(srcArr) {
+        srcArr.sort((a, b) => a.pid - b.pid);
+        for (let i = srcArr.length - 1; i >= 0; i--) {
+            for (let j = i - 1; j >= 0; j--) {
+                if (srcArr[i].pid === srcArr[j].id) {
+                    if (srcArr[j].son) {
+                        srcArr[j].son.push(srcArr[i]);
+                    } else {
+                        srcArr[j].son = [srcArr[i]];
+                    }
+                    srcArr.splice(i, 1);
+                    break
+                }
+            }
+        }
+        return srcArr
+    }
+    console.log(handleArrToParentAndSon(srcArr))
+
+
+</script>
+
+</html>
