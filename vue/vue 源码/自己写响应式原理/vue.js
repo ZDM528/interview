@@ -150,3 +150,31 @@ class Vue {
         })
     }
 }
+
+
+let arr = [{
+    id: 1,
+    time: 1,
+    pid: 0
+}, {
+    id: 2,
+    time: 2,
+    pid: 1
+}, {
+    id: 3,
+    time: 3,
+    pid: 2
+}]
+function minTime (arr) {
+    let res = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let maxTime = arr[i].pid.time;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i].pid === arr[j].pid && maxTime < arr[j].pid.time) {
+                maxTime = arr[j].pid.time;
+            }
+        }
+    }
+}
+
+minTime(arr);
