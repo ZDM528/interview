@@ -18,8 +18,8 @@
         if (typeof callback !== 'function') {
             throw new TypeError("callback is not a function")
         }
-        const res = []
-        const O = Object(this)
+        const res = [];
+        const O = Object(this);
         const len = O.length
         for (let i = 0; i < len; i++) { // 会检查原型链
             if (i in O) {  // 判断是否在O上，而不是原型链
