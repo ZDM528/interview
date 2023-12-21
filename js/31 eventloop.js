@@ -4,8 +4,8 @@ process.nextTick(function A () {
     process.nextTick(function B () { console.log(3); });
 });
 setImmediate(function A () {
-    console.log(1);
-    setImmediate(function B () { console.log(2); });
+    console.log(5);
+    setImmediate(function B () { console.log(7); });
 });
 setTimeout(function timeout () {
     console.log(4);
